@@ -8,23 +8,16 @@ html, body {
     line-height: 1.6em;
 }
 
-.scroll-snap-container {
-    width: 100vw;
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-}
 
-.scroll-snap-container > section {
+section {
     width: 100%;
-    scroll-snap-align: start;
     padding: 50px 0;
 }
 
 .aboutme {
     font-size: 40px;
 }
+
 
 h1 {
     color: #adadad;
@@ -40,7 +33,7 @@ h1 {
     padding: 1em 0;
     list-style-type: none;
   }
-  
+
   .timeline:before {
     position: absolute;
     left: 50%;
@@ -52,9 +45,20 @@ h1 {
     margin-left: -2px;
     background-color: #adadad;
     background: linear-gradient(to bottom, rgba(173, 173, 173, 0) 0%, rgb(173, 173, 173) 8%, rgb(173, 173, 173) 92%, rgba(173, 173, 173, 0) 100%);
-    
     z-index: 5;
   }
+
+  @media screen and (max-width: 809px) {
+    .timeline {
+      width: 405px;
+    }
+
+    .timeline:before {
+      left: auto;
+    }
+  }
+
+
   
   .timeline li {
     padding: 1em 0;
@@ -68,17 +72,18 @@ h1 {
     visibility: hidden;
   }
   
-  li:nth-child(2n+1) > .wrapper {
-    position: relative;
-    width: 375px;
-    float: left;
-    text-align: right;
-  }
-  
+  li:nth-child(2n+1) > .wrapper,
   li:nth-child(2n) > .wrapper {
     position: relative;
     width: 375px;
     float: right;
+  }
+
+  @media screen and (min-width: 810px) {
+    li:nth-child(2n+1) > .wrapper {
+      float: left;
+      text-align: right;
+    }
   }
   
   .content {
@@ -88,10 +93,16 @@ h1 {
     color: #adadad;
     font-size: 20px;
     font-weight: 400;
+    width: 375px;
   }
   
   li:nth-child(2n+1) .content {
-    text-align: left;
+    text-align: right;
+  }
+  @media screen and (min-width: 810px) {
+    li:nth-child(2n+1) .content {
+      text-align: left;
+    }
   }
   
   li:nth-child(2n) .content {
@@ -109,7 +120,7 @@ h1 {
   li:nth-child(2n) .content:before {
     position: absolute;
     top: 50%;
-    right: -40px;
+    left: -40px;
     content: ' ';
     display: block;
     width: 12px;
@@ -121,6 +132,9 @@ h1 {
     z-index: 10;
   }
   
-  li:nth-child(2n) .content:before {
-    left: -40px;
+  @media screen and (min-width: 810px) {
+    li:nth-child(2n+1) .content:before {
+      right: -40px;
+      left: auto;
+    }
   }

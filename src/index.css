@@ -92,7 +92,8 @@ h1 {
   }
 
   @media screen and (min-width: 405px) {
-    .wrapper {
+    li:nth-child(2n+1) > .wrapper,
+    li:nth-child(2n) > .wrapper {
       width: 375px;
     }
   }
